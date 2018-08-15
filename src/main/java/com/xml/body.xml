@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xmlBody>
+    <classA>
+        <attrC>attrC</attrC>
+        <eleA>eleA</eleA>
+        <eleB>eleB</eleB>
+    </classA>
+    <classB>
+        <attrPassword>attrB</attrPassword>
+        <attrUserName>attrA</attrUserName>
+        <eleCode>eleC</eleCode>
+    </classB>
+    <rootA>rootA</rootA>
+    <rootB>rootB</rootB>
+</xmlBody>
