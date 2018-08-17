@@ -2,6 +2,9 @@ package com.webservice.configuration;
 
 import com.webservice.service.impl.GreetingServiceImpl;
 import com.webservice.service.impl.InforServiceImpl;
+import com.webservice.service.interceptor.AppInboundInterceptor;
+import com.webservice.service.interceptor.AppOutboundInterceptor;
+import com.webservice.service.interceptor.AuthInterceptor;
 import org.apache.cxf.Bus;
 import org.apache.cxf.bus.spring.SpringBus;
 import org.apache.cxf.feature.LoggingFeature;
@@ -19,29 +22,32 @@ import javax.xml.ws.Endpoint;
 @Configuration
 public class WebServiceConfiguration {
     @Bean
-    ServletRegistrationBean dispatcherServlet(){
-        return new ServletRegistrationBean(new CXFServlet(), "/services");
+    ServletRegistrationBean dispatcherServlet() {
+        return new ServletRegistrationBean(new CXFServlet(), "/services/*");
+    }
+
+    @Bean(name = Bus.DEFAULT_BUS_ID)
+    public SpringBus springBus() {
+        SpringBus springBus = new SpringBus();
+        springBus.getInInterceptors().add(new AuthInterceptor());
+//        springBus.getInInterceptors().add(new AppInboundInterceptor());
+//        springBus.getOutInterceptors().add(new AppOutboundInterceptor());
+        return springBus;
     }
 
     @Bean
-    Endpoint endpointGreetingService(){
-        EndpointImpl endpoint = new EndpointImpl(springBus(),new GreetingServiceImpl());
+    Endpoint GreetingService() {
+        EndpointImpl endpoint = new EndpointImpl(springBus(), new GreetingServiceImpl());
         endpoint.getFeatures().add(new LoggingFeature());
         endpoint.publish("/GreetingService");
         return endpoint;
     }
 
     @Bean
-    Endpoint endpointInfoService() {
+    Endpoint InfoService() {
         EndpointImpl endpoint = new EndpointImpl(springBus(), new InforServiceImpl());
         endpoint.getFeatures().add(new LoggingFeature());
         endpoint.publish("/InfoService");
         return endpoint;
-    }
-
-    @Bean(name=Bus.DEFAULT_BUS_ID)
-    public SpringBus springBus() {
-        SpringBus springBus = new SpringBus();
-        return springBus;
     }
 }

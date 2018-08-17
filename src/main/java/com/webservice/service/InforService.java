@@ -7,6 +7,9 @@ import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 
+/**
+ * @author someone
+ */
 @WebService
 public interface InforService {
     @WebMethod

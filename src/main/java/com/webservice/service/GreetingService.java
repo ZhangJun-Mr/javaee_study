@@ -7,7 +7,10 @@ import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 
-@WebService(serviceName = "GreetingService")
+/**
+ * @author someone
+ */
+@WebService
 public interface GreetingService {
     @WebMethod
     @WebResult(name = "Greeting")
