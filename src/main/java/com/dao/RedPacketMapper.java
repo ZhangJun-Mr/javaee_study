@@ -13,7 +13,8 @@ public interface RedPacketMapper {
     /**
      * 扣减抢红包数
      * @param id 红包id
+     * @param version 版本号
      * @return 更新记录条数
      */
-    int decreaseRedPacket(Long id);
+    int decreaseRedPacket(Long id, Integer version);
 }

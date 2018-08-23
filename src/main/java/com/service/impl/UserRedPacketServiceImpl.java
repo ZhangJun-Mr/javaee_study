@@ -26,12 +26,15 @@ public class UserRedPacketServiceImpl implements UserRedPacketService {
     public int grapRedPacket(Long redPacketId, Long userId) {
         RedPacket redPacket = redPacketMapper.getRedPacket(redPacketId);
         if (redPacket.getStock() > 0) {
-            redPacketMapper.decreaseRedPacket(redPacketId);
+            int update = redPacketMapper.decreaseRedPacket(redPacketId, redPacket.getVersion());
+            if (update == 0) {
+                return FALIED;
+            }
             UserRedPacket userRedPacket = new UserRedPacket();
             userRedPacket.setRedPacketId(redPacketId);
             userRedPacket.setUserId(userId);
             userRedPacket.setAmount(redPacket.getUnitAmount());
-            userRedPacket.setNote("抢红包 "+ redPacketId);
+            userRedPacket.setNote("抢红包 " + redPacketId);
 
             int result = userRedPacketMapper.grapRedPacket(userRedPacket);
             return result;

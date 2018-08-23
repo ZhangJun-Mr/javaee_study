@@ -1,10 +1,14 @@
 package com.pojo;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.sql.Timestamp;
 
 @Data
+@NoArgsConstructor
+@ToString
 public class UserRedPacket {
     private Long id;
     private Long redPacketId;

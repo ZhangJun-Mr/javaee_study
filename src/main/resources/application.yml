@@ -3,12 +3,42 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 123456
-    url: jdbc:mysql://127.0.0.1:3306/mydb?useSSL=false
-    tomcat:
-      max-active: 200
+    url: jdbc:mysql://127.0.0.1:3306/mytest?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      filters: stat,wall,log4j2
+      filter:
+        config:
+          enabled: true
+        stat:
+          enabled: true
+          statement-executable-sql-log-enable: true
+          db-type: mysql
+        wall:
+          enabled: true
+        log4j2:
+          enabled: true
+          statement-executable-sql-log-enable: true
+      initial-size: 30000
+      min-idle: 1
+      max-active: 30000
       max-wait: 30000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 0
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
 
 mybatis:
+#  type-aliases-package: com.pojo
+  mapper-locations: classpath:xml/*.xml
   configuration:
     callSettersOnNulls: true
     mapUnderscoreToCamelCase: true
+server:
+  tomcat:
+    max-threads: 30000
+    accept-count: 60000

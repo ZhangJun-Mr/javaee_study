@@ -40,3 +40,13 @@ create table t_user_red_packet (
 
 insert into t_red_packet (user_id, amount, send_date, total, unit_amount, stock, note)
 values (1, 200000.00, now(), 20000, 10.00, 20000, '20万元金额，2万个小红包，每个10元');
+
+update t_red_packet
+set user_id = 1, amount = 200000.00, send_date = now(), total = 20000, unit_amount = 10.00, stock = 20000,
+  note      = '20万元金额，2万个小红包，每个10元';
+
+delete from t_user_red_packet;
+
+select count(amount)
+from t_user_red_packet
+where red_packet_id = 1;

@@ -4,19 +4,16 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<script src="https://code.jquery.com/jquery-3.2.0.js">
-</script>
+<script src="https://code.jquery.com/jquery-3.2.0.js"></script>
 <script type="text/javascript">
-    $(document).read(function () {
-        var max = 30000;
-        for (var i = 1; i <= max; i++) {
+    $(document).ready(function () {
             $.post({
-                url: "http://localhost:88080/grapRedPacket?redPacketId=1&userId="+i,
+                url: "http://localhost:8080/grapRedPacket?redPacketId=1&userId=1",
                 success: function (result) {
-
+                    debugger
+                    console.log(result);
                 }
-            });
-        }
+            })
     });
 </script>
 <body>
