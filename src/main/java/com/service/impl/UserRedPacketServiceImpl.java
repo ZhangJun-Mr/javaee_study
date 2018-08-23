@@ -24,21 +24,28 @@ public class UserRedPacketServiceImpl implements UserRedPacketService {
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
     public int grapRedPacket(Long redPacketId, Long userId) {
-        RedPacket redPacket = redPacketMapper.getRedPacket(redPacketId);
-        if (redPacket.getStock() > 0) {
-            int update = redPacketMapper.decreaseRedPacket(redPacketId, redPacket.getVersion());
-            if (update == 0) {
+        long start = System.currentTimeMillis();
+        while (true) {
+            long end = System.currentTimeMillis();
+            if (end - start > 100) {
                 return FALIED;
             }
-            UserRedPacket userRedPacket = new UserRedPacket();
-            userRedPacket.setRedPacketId(redPacketId);
-            userRedPacket.setUserId(userId);
-            userRedPacket.setAmount(redPacket.getUnitAmount());
-            userRedPacket.setNote("抢红包 " + redPacketId);
+            RedPacket redPacket = redPacketMapper.getRedPacket(redPacketId);
+            if (redPacket.getStock() > 0) {
+                int update = redPacketMapper.decreaseRedPacket(redPacketId, redPacket.getVersion());
+                if (update == 0) {
+                    continue;
+                }
+                UserRedPacket userRedPacket = new UserRedPacket();
+                userRedPacket.setRedPacketId(redPacketId);
+                userRedPacket.setUserId(userId);
+                userRedPacket.setAmount(redPacket.getUnitAmount());
+                userRedPacket.setNote("抢红包 " + redPacketId);
 
-            int result = userRedPacketMapper.grapRedPacket(userRedPacket);
-            return result;
+                int result = userRedPacketMapper.grapRedPacket(userRedPacket);
+                return result;
+            }
+            return FALIED;
         }
-        return FALIED;
     }
 }
