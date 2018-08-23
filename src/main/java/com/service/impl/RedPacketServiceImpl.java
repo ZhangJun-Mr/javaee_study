@@ -23,7 +23,7 @@ public class RedPacketServiceImpl implements RedPacketService {
 
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
-    public int decreaeRedPacket(Long id, int version) {
+    public int decreaeRedPacket(Long id, Integer version) {
         int i = redPacketMapper.decreaseRedPacket(id, version);
         return i;
     }

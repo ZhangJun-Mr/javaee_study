@@ -5,5 +5,5 @@ import com.pojo.RedPacket;
 public interface RedPacketService {
     RedPacket getRedPacket(Long id);
 
-    int decreaeRedPacket(Long id, int version);
+    int decreaeRedPacket(Long id, Integer version);
 }

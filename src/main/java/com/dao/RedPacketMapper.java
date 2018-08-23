@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.pojo.RedPacket;
+import org.apache.ibatis.annotations.Param;
 
 public interface RedPacketMapper {
     /**
@@ -16,5 +17,5 @@ public interface RedPacketMapper {
      * @param version 版本号
      * @return 更新记录条数
      */
-    int decreaseRedPacket(Long id, Integer version);
+    int decreaseRedPacket(@Param("id") Long id, @Param("version") Integer version);
 }

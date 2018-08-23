@@ -38,6 +38,7 @@ mybatis:
   configuration:
     callSettersOnNulls: true
     mapUnderscoreToCamelCase: true
+
 server:
   tomcat:
     max-threads: 30000
