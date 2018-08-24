@@ -6,7 +6,7 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/mytest?useSSL=false&useUnicode=true&characterEncoding=UTF-8
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      filters: stat,wall,log4j2
+      filters: stat,wall,slf4j
       filter:
         config:
           enabled: true
@@ -19,10 +19,10 @@ spring:
         log4j2:
           enabled: true
           statement-executable-sql-log-enable: true
-      initial-size: 30000
+      initial-size: 5
       min-idle: 1
-      max-active: 30000
-      max-wait: 30000
+      max-active: 20
+      max-wait: 60000
       time-between-eviction-runs-millis: 60000
       min-evictable-idle-time-millis: 300000
       validation-query: select 0
