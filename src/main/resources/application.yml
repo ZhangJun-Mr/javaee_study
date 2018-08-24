@@ -12,11 +12,10 @@ spring:
           enabled: true
         stat:
           enabled: true
-          statement-executable-sql-log-enable: true
           db-type: mysql
         wall:
           enabled: true
-        log4j2:
+        slf4j:
           enabled: true
           statement-executable-sql-log-enable: true
       initial-size: 5
