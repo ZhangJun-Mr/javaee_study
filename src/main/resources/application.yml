@@ -12,14 +12,14 @@ spring:
           enabled: true
         stat:
           enabled: true
-          statement-executable-sql-log-enable: true
           db-type: mysql
         wall:
           enabled: true
         log4j2:
           enabled: true
           statement-executable-sql-log-enable: true
-      initial-size: 30000
+          statement-log-enabled: true
+      initial-size: 2
       min-idle: 1
       max-active: 30000
       max-wait: 30000
@@ -43,3 +43,8 @@ server:
   tomcat:
     max-threads: 30000
     accept-count: 60000
+logging:
+  level:
+    com.dao: debug
+
+

@@ -12,4 +12,27 @@
         set stock = stock - 1, version = version + 1
         where id = #{id} and version = #{version}
     </update>
+
+    <select id="getAll" resultType="com.pojo.UserRedPacket">
+        select * from t_user_red_packet
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">and id=#{id}</if>
+            <if test="redPacketId != null">and red_packet_id=#{redPacketId}</if>
+        </trim>
+    </select>
+
+    <update id="update">
+        update t_user_red_packet
+        <trim prefix="set" suffixOverrides=",">
+            <if test="note != null">note=#{note},</if>
+            <if test="amount != null">amount=#{amount}</if>
+        </trim>
+    </update>
+
+    <insert id="insert">
+        insert into t_user_red_packet
+                <foreach collection="cc" item="cc" index="x" open="(" separator="," close=")">
+
+                </foreach>
+    </insert>
 </mapper>
