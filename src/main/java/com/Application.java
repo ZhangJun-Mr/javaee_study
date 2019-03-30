@@ -8,7 +8,6 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 /**
  * @author someone
  */
-@ServletComponentScan
 @SpringBootApplication
 @MapperScan("com.modules.*.mapper")
 public class Application {

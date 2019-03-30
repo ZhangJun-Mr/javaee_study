@@ -1,6 +1,6 @@
 package com.modules.custom.controller;
 
-import com.modules.custom.service.UserRedPacketService;
+import com.modules.custom.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,15 +14,13 @@ import java.util.Map;
 @RequestMapping("/aa")
 public class MyController {
     @Autowired
-    UserRedPacketService userRedPacketService;
+    UserService userRedPacketService;
 
     @RequestMapping("/grapRedPacket")
     public Map<String, Object> invoke(Long redPacketId, Long userId) {
-        int result = userRedPacketService.grapRedPacket(redPacketId, userId);
         Map<String, Object> retMap = new HashMap<>(16);
-        boolean flag = result > 0;
-        retMap.put("success", flag);
-        retMap.put("message", flag ? "抢红包成功" : "抢红包失败");
+        retMap.put("success", 0);
+        retMap.put("message", "抢红包成功" );
         return retMap;
     }
 }

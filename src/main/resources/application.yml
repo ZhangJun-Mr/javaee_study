@@ -62,6 +62,9 @@ spring:
       use-global-data-source-stat: true
   quartz:
     job-store-type: jdbc
+  devtools:
+    livereload:
+      enabled: false
 
 server:
   port: 8081
@@ -70,7 +73,6 @@ server:
     accept-count: 60000
   servlet:
     context-path: /javaee
-
 
 mybatis-plus:
   mapper-locations: classpath:xml/*.xml
