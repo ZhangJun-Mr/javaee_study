@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author zhangjun
  */
-public interface UserService {
+public interface UserService extends IService<User> {
     /**
      * 查询列表
      * @return

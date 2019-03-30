@@ -1,5 +1,6 @@
 package com.modules.custom.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.modules.custom.mapper.UserMapper;
 import com.modules.custom.pojo.User;
 import com.modules.custom.service.UserService;
@@ -12,7 +13,7 @@ import java.util.List;
  * @author zhangjun
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     @Autowired
     UserMapper userMapper;
