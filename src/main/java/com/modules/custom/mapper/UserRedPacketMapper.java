@@ -1,6 +1,6 @@
-package com.dao;
+package com.modules.custom.mapper;
 
-import com.pojo.UserRedPacket;
+import com.modules.custom.pojo.UserRedPacket;
 
 public interface UserRedPacketMapper {
     /**

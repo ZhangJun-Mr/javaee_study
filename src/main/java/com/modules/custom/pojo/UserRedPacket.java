@@ -1,4 +1,4 @@
-package com.pojo;
+package com.modules.custom.pojo;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

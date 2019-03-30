@@ -1,7 +1,6 @@
-package com.controller;
+package com.modules.custom.controller;
 
-import com.service.RedPacketService;
-import com.service.UserRedPacketService;
+import com.modules.custom.service.UserRedPacketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +19,7 @@ public class MyController {
     @RequestMapping("/grapRedPacket")
     public Map<String, Object> invoke(Long redPacketId, Long userId) {
         int result = userRedPacketService.grapRedPacket(redPacketId, userId);
-        Map<String, Object> retMap = new HashMap<String, Object>(16);
+        Map<String, Object> retMap = new HashMap<>(16);
         boolean flag = result > 0;
         retMap.put("success", flag);
         retMap.put("message", flag ? "抢红包成功" : "抢红包失败");
