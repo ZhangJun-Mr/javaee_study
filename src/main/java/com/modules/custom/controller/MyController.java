@@ -11,7 +11,7 @@ import java.util.Map;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/")
+@RequestMapping("/aa")
 public class MyController {
     @Autowired
     UserRedPacketService userRedPacketService;
