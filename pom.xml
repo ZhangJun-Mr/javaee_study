@@ -3,12 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>javaee_study</groupId>
-    <artifactId>javaee_study</artifactId>
+    <groupId>springboot_study</groupId>
+    <artifactId>springboot_study</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>javaee_study</name>
+    <name>springboot_study</name>
     <description/>
 
     <parent>
